@@ -1,5 +1,9 @@
-const double = n => n * 2;
+import Location from "./Location";
 
-const increment = n => n + 1;
+const url = "http://ip-api.com/json";
+const ip = "134.234.3.2";
 
-export default (arg) => arg |> increment |> double;
+const location = new Location(ip, url);
+
+location.showData();
+location.showData("country");

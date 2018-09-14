@@ -19,6 +19,7 @@
     "@babel/node": "7.0.0",
     "@babel/plugin-proposal-pipeline-operator": "7.0.0",
     "@babel/preset-env": "7.0.0",
+    "axios": "0.18.0",
     "babel-eslint": "9.0.0",
     "eslint": "5.5.0",
     "eslint-plugin-jest": "21.22.0",
