@@ -1,9 +1,28 @@
-import Location from "./Location";
+import axios from "axios";
 
-const url = "http://ip-api.com/json";
-const ip = "134.234.3.2";
+export default class Location {
+  constructor(ip) {
+    this.ip = ip;
+    this.url = "http://ip-api.com/json";
+  }
 
-const location = new Location(ip, url);
+  async getData() {
+    try {
+      const response = await axios(`${this.url}/${this.ip}`);
+      const respData = await response.data;
+      return respData;
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
 
-location.showData();
-location.showData("country");
+  showData(arg) {
+    return this.getData().then(d => {
+      if (!arg) {
+        console.log(d);
+      } else {
+        console.log(d[arg]);
+      }
+    });
+  }
+}
