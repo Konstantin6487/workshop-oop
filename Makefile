@@ -10,7 +10,7 @@ build:
 	npm run build
 
 lint:
-	npx eslint .
+	npx eslint src/
 
 test:
 	npm run test
