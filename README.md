@@ -2,8 +2,8 @@
 
 ## Usage
 ```
-const location = new Location('1.2.3.4');
-location.showData();
+const location = new Location();
+location.getLocationData('1.2.3.4');
 /*
 { as: '',
   city: 'South Brisbane',
@@ -21,8 +21,6 @@ location.showData();
   zip: '4101' }
 */
 
-location.showData('country');
-// Australia
 ```
 
 ## Start
