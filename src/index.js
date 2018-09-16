@@ -1,15 +1,21 @@
 import axios from 'axios';
 
 export default class Location {
-  url = 'http://ip-api.com/json';
-
-  fetchData(ip) {
-    return axios(`${this.url}/${ip}`);
+  constructor(_httpClient) {
+    this.httpClient = _httpClient || axios;
   }
 
-  async getLocationData(ip, client) {
-    const httpClient = client ? Promise.resolve(client) : this.fetchData(ip);
-    const result = await httpClient.then(d => d.data).catch(e => e);
-    return result;
+  url = 'http://ip-api.com/json';
+
+  async fetchData(ip) {
+    const respData = await this.httpClient
+      .get(`${this.url}/${ip}`)
+      .then(d => d.data)
+      .catch(e => Error(e));
+    return respData;
+  }
+
+  getLocationData(ip) {
+    return this.fetchData(ip);
   }
 }
