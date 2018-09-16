@@ -18,7 +18,7 @@ describe('fail response', () => {
     try {
       await new Location(httpClient).getLocationData('0.0.0.0');
     } catch (e) {
-      expect(e).toEqual({ message: 'invalid query', query: 'xxx', status: 'fail' });
+      expect(e).toEqual(res);
     }
   });
 });
