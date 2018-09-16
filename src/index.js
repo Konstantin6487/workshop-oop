@@ -7,15 +7,15 @@ export default class Location {
 
   url = 'http://ip-api.com/json';
 
-  async fetchData(ip) {
-    const respData = await this.httpClient
-      .get(`${this.url}/${ip}`)
-      .then(d => d.data)
-      .catch(e => Error(e));
-    return respData;
-  }
-
-  getLocationData(ip) {
-    return this.fetchData(ip);
+  async getLocationData(ip) {
+    try {
+      const { data } = await this.httpClient.get(`${this.url}/${ip}`);
+      if (data.status !== 'success') {
+        throw data;
+      }
+      return data;
+    } catch (e) {
+      throw e;
+    }
   }
 }
