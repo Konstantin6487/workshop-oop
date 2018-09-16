@@ -30,6 +30,6 @@ describe('success response', () => {
   };
 
   test('status: "success"', async () => {
-    await expect(new Location(httpClient).getLocationData()).resolves.toEqual(res.locals.data);
+    await expect(new Location(httpClient).getLocationData('1.2.3.4')).resolves.toEqual(res.locals.data);
   });
 });
