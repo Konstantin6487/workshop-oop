@@ -8,14 +8,10 @@ export default class Location {
   url = 'http://ip-api.com/json';
 
   async getLocationData(ip) {
-    try {
-      const { data } = await this.httpClient.get(`${this.url}/${ip}`);
-      if (data.status !== 'success') {
-        throw data;
-      }
-      return data;
-    } catch (e) {
-      throw e;
+    const { data } = await this.httpClient.get(`${this.url}/${ip}`);
+    if (data.status !== 'success') {
+      throw data;
     }
+    return data;
   }
 }
